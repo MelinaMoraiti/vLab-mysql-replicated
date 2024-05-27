@@ -1,2 +1,2 @@
 # vLab-MySQL-Replication
-A real-time collaborative text editor using CodeMirror, hosted in a virtual laboratory using docker environment. 
+Implementation of a replicated MySQL setup, hosted in a virtual laboratory using docker environment.  
