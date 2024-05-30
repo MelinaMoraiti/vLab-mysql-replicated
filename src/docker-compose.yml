@@ -1,0 +1,39 @@
+version '3'
+
+services:
+  mysql_master:
+    image: mysql:8.0
+    env_file:
+      - ./master/mysql_master.env
+    container_name: mysql_master
+    restart: no
+    ports:
+      - 4406:3306
+    volumes:
+      - ./master/conf/mysql.conf.cnf:/etc/mysql/my.cnf
+      - mysql-master-data:/var/lib/mysql
+    networks:
+      - mysql-replication-network
+  mysql_slave:
+    image: mysql:8.0
+    env_file:
+      - ./master/mysql_slave.env
+    container_name: mysql_slave
+    restart: no
+    ports:
+      - 4406:3306
+    volumes:
+      - ./slave/conf/mysql.conf.cnf:/etc/mysql/my.cnf
+      - mysql-slave-data:/var/lib/mysql
+    networks:
+      - mysql-replication-network
+
+volumes:
+  mysql-master-data:
+    driver: local
+  mysql-slave-data:
+    driver: local
+
+networks:
+  mysql-replication-network:
+    driver: bridge
