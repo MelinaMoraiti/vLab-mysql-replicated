@@ -31,12 +31,16 @@ MS_STATUS=$(docker exec mysql_master mysql -u root -p${MYSQL_ROOT_PASSWORD} -e '
 CURRENT_LOG=$(echo "$MS_STATUS" | grep 'File:' | awk '{print $2}')
 CURRENT_POS=$(echo "$MS_STATUS" | grep 'Position:' | awk '{print $2}')
 
-#CONFIGURE SLAVE
-echo "Configuring the slave..."
-start_slave_stmt="CHANGE MASTER TO MASTER_HOST='mysql_master',MASTER_USER='${MYSQL_USER}',MASTER_PASSWORD='${MYSQL_PASSWORD}',MASTER_LOG_FILE='${CURRENT_LOG}',MASTER_LOG_POS=${CURRENT_POS}; START SLAVE;"
-docker exec mysql_slave mysql -u root -p${MYSQL_ROOT_PASSWORD} -e "$start_slave_stmt"
+configure_slave() {
+    local slave_name=$1
+    echo "Configuring $slave_name..."
+    start_slave_stmt="CHANGE MASTER TO MASTER_HOST='mysql_master',MASTER_PORT=3306,MASTER_USER='${MYSQL_USER}',MASTER_PASSWORD='${MYSQL_PASSWORD}',MASTER_LOG_FILE='${CURRENT_LOG}',MASTER_LOG_POS=${CURRENT_POS}; START SLAVE;"
+    docker exec $slave_name mysql -u root -p${MYSQL_ROOT_PASSWORD} -e "$start_slave_stmt"
+    echo "Checking $slave_name status..."
+    docker exec $slave_name mysql -u root -p${MYSQL_ROOT_PASSWORD} -e 'SHOW SLAVE STATUS \G'
+}
 
-echo "Checking slave status..."
-docker exec mysql_slave mysql -u root -p${MYSQL_ROOT_PASSWORD} -e 'SHOW SLAVE STATUS \G'
+#Configure slave
+configure_slave mysql_slave
 
 echo "MySQL replication setup is complete"
