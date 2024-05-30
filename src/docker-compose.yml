@@ -14,24 +14,39 @@ services:
       - mysql-master-data:/var/lib/mysql
     networks:
       - mysql-replication-network
-  mysql_slave:
+  mysql_slave1:
     image: mysql:8.0
     env_file:
-      - ./master/mysql_slave.env
-    container_name: mysql_slave
+      - ./slave1/mysql_slave.env
+    container_name: mysql_slave1
     restart: no
     ports:
       - 4406:3306
     volumes:
-      - ./slave/conf/mysql.conf.cnf:/etc/mysql/my.cnf
-      - mysql-slave-data:/var/lib/mysql
+      - ./slave1/conf/mysql.conf.cnf:/etc/mysql/my.cnf
+      - mysql-slave1-data:/var/lib/mysql
+    networks:
+      - mysql-replication-network
+  mysql_slave2:
+    image: mysql:8.0
+    env_file:
+      - ./slave2/mysql_slave.env
+    container_name: mysql_slave2
+    restart: no
+    ports:
+      - 4406:3306
+    volumes:
+      - ./slave2/conf/mysql.conf.cnf:/etc/mysql/my.cnf
+      - mysql-slave2-data:/var/lib/mysql
     networks:
       - mysql-replication-network
 
 volumes:
   mysql-master-data:
     driver: local
-  mysql-slave-data:
+  mysql-slave1-data:
+    driver: local
+  mysql-slave2-data:
     driver: local
 
 networks:
