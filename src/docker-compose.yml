@@ -21,7 +21,7 @@ services:
     container_name: mysql_slave1
     restart: no
     ports:
-      - 4406:3306
+      - 4407:3306
     volumes:
       - ./slave1/conf/mysql.conf.cnf:/etc/mysql/my.cnf
       - mysql-slave1-data:/var/lib/mysql
@@ -34,7 +34,7 @@ services:
     container_name: mysql_slave2
     restart: no
     ports:
-      - 4406:3306
+      - 4407:3306
     volumes:
       - ./slave2/conf/mysql.conf.cnf:/etc/mysql/my.cnf
       - mysql-slave2-data:/var/lib/mysql
