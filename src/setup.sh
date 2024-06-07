@@ -23,7 +23,8 @@ echo "Creating replication user on master..."
 priv_stmt="CREATE USER '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}'; GRANT REPLICATION SLAVE ON *.* TO '${MYSQL_USER}'@'%'; FLUSH PRIVILEGES;"
 docker exec mysql_master mysql -u root -p${MYSQL_ROOT_PASSWORD} -e "$priv_stmt"
 
-wait_for_mysql mysql_slave
+wait_for_mysql mysql_slave1
+wait_for_mysql mysql_slave2
 
 #Get master status
 MS_STATUS=$(docker exec mysql_master mysql -u root -p${MYSQL_ROOT_PASSWORD} -e 'SHOW MASTER STATUS \G')
@@ -40,6 +41,7 @@ configure_slave() {
 }
 
 #Configure slave
-configure_slave mysql_slave
+configure_slave mysql_slave1
+configure_slave mysql_slave2
 
 echo "MySQL replication setup is complete"
