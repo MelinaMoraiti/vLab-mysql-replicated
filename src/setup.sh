@@ -4,8 +4,8 @@ export $(grep -v '^#' ./master/mysql_master.env | xargs)
 export $(grep -v '^#' ./slave1/mysql_slave.env | xargs)
 export $(grep -v '^#' ./slave2/mysql_slave.env | xargs)
 
-docker-compose build
-docker-compose up -d
+docker compose build
+docker compose up -d
 
 wait_for_mysql() {
     local container_name=$1
