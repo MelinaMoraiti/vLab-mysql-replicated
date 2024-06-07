@@ -34,7 +34,7 @@ services:
     container_name: mysql_slave2
     restart: no
     ports:
-      - 4407:3306
+      - 4408:3306
     volumes:
       - ./slave2/conf/mysql.conf.cnf:/etc/mysql/my.cnf
       - mysql-slave2-data:/var/lib/mysql
