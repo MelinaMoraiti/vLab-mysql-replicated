@@ -9,7 +9,7 @@ Before you begin, ensure you have the following installed on your system:
 ## 🚀 Installation Steps
 Clone the repository to your local machine:
 ```bash
-git clone https://github.com/MelinaMoraiti/vLab-mysql-replicatedn.git
+git clone https://github.com/MelinaMoraiti/vLab-mysql-replicated.git
 ```
 Go to the directory of the project
 ```bash
