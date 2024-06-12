@@ -21,14 +21,15 @@ This command will grant execute permissions to both setup.sh and stop.sh scripts
 ```bash
 chmod +x src/setup.sh src/stop.sh
 ```
-Run the following command to execute the setup.sh script which is responsible to build, start the Docker containers, create data volumes for MySQL and also handle the setup needed for MySQL replication.
+Run the following commands to execute the setup.sh script which is responsible to build, start the Docker containers, create data volumes for MySQL and also handle the setup needed for MySQL replication.
 ```bash
-./src/setup.sh
+cd src
+./setup.sh
 ```
 
 ## ⛔ Stopping the environment
 To stop the Docker containers and remove volumes, run:
 ```bash
-./src/stop.sh
+./stop.sh
 ```
 
