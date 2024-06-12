@@ -5,7 +5,8 @@ Before you begin, ensure you have the following installed on your system:
 - Docker
 - Docker Compose
 - Git
-
+**Note:** The bash shell scripts are designed to run on a **Linux** environment. While Docker is cross-platform, (Docker Desktop is the version of Docker designed for macOS and Windows), the scripts provided here are tailored specifically for Linux systems.
+  
 ## 🚀 Installation Steps
 Clone the repository to your local machine:
 ```bash
@@ -19,7 +20,7 @@ This command will grant execute permissions to both setup.sh and stop.sh scripts
 ```bash
 chmod +x src/setup.sh src/stop.sh
 ```
-Run the following command to execute the setup.sh script which is responsible to build, start the Docker containers and also handle the setup of the MySQL replication.
+Run the following command to execute the setup.sh script which is responsible to build, start the Docker containers, create data volumes for MySQL and also handle the setup needed for MySQL replication.
 ```bash
 ./src/setup.sh
 ```
