@@ -5,6 +5,7 @@ Before you begin, ensure you have the following installed on your system:
 - Docker
 - Docker Compose
 - Git
+  
 **Note:** The bash shell scripts are designed to run on a **Linux** environment. While Docker is cross-platform, (Docker Desktop is the version of Docker designed for macOS and Windows), the scripts provided here are tailored specifically for Linux systems.
   
 ## 🚀 Installation Steps
