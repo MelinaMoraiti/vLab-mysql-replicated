@@ -1,9 +1,9 @@
 # vLab-MySQL-Replication using Docker 🐳
 
-# Description:
+## Description:
 Implementation of a replicated MySQL setup, hosted in a virtual laboratory using docker environment. The lab includes network isolation, automated service execution (with shell scripts), and resource configuration for memory requirements.
 
-# Contents:
+## Contents:
 Our project contains the following:
 
 - A docker-compose.yaml file that describes the services we use. Specifically, we use 3 containers, a master which is our main hub and two slave containers that are used to replicate the masters data.
@@ -25,3 +25,5 @@ Our project contains the following:
     4. Displays the replicated data in the tables.
 
 - A Makefile that runs the setup script, a docker ps command that shows that all containers are up and running, the testing script and then the stop script. It essentialy demonstrates how our project works.
+
+- An Install.md file that shows how to run our project.
