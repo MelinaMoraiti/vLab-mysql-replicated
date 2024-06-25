@@ -19,7 +19,7 @@ cd vLab-mysql-replicated
 ```
 This command will grant execute permissions to both setup.sh and stop.sh scripts
 ```bash
-chmod +x src/setup.sh src/stop.sh
+chmod +x src/setup.sh src/stop.sh src/testing.sh
 ```
 Run the following commands to execute the setup.sh script which is responsible to build, start the Docker containers, create data volumes for MySQL and also handle the setup needed for MySQL replication.
 ```bash
