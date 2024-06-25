@@ -19,7 +19,7 @@ services:
   mysql_slave1:
     image: mysql:8.0
     mem_limit: 512m
-  mem_reservation: 128M
+    mem_reservation: 128M
     env_file:
       - ./slave1/mysql_slave.env
     container_name: mysql_slave1
